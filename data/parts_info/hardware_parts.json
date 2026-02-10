@@ -1,0 +1,44 @@
+{
+  "parts": [
+    {
+      "id": 0,
+      "name": "M6六角螺母",
+      "category": "hex_nut",
+      "specification": "M6螺纹，对边距离10mm",
+      "description": "标准六角螺母，用于螺栓连接",
+      "image_path": "data/reference_images/hex_nut.jpg"
+    },
+    {
+      "id": 1,
+      "name": "十字槽螺丝",
+      "category": "cross_screw",
+      "specification": "M6×20mm，十字槽",
+      "description": "十字槽圆头螺丝，常用于家具组装",
+      "image_path": "data/reference_images/cross_screw.jpg"
+    },
+    {
+      "id": 2,
+      "name": "平垫片",
+      "category": "flat_washer",
+      "specification": "内径6mm，外径12mm，厚度1mm",
+      "description": "平垫片，用于分散螺栓压力",
+      "image_path": "data/reference_images/flat_washer.jpg"
+    },
+    {
+      "id": 3,
+      "name": "L型角码",
+      "category": "l_bracket",
+      "specification": "40×40×20mm，厚度2mm",
+      "description": "L型角码，用于直角连接",
+      "image_path": "data/reference_images/l_bracket.jpg"
+    },
+    {
+      "id": 4,
+      "name": "偏心轮",
+      "category": "eccentric_wheel",
+      "specification": "直径15mm，偏心距2mm",
+      "description": "偏心轮，用于家具连接件",
+      "image_path": "data/reference_images/eccentric_wheel.jpg"
+    }
+  ]
+}

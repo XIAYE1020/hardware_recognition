@@ -1,0 +1,1 @@
+timestamp,image_path,part_category,confidence,bbox_x,bbox_y,bbox_width,bbox_height,detection_time_ms,model_version

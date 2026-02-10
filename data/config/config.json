@@ -1,0 +1,32 @@
+{
+  "model_config": {
+    "model_name": "yolov8n.pt",
+    "input_size": [640, 640],
+    "confidence_threshold": 0.5,
+    "iou_threshold": 0.45,
+    "max_detections": 100
+  },
+  "class_names": [
+    "hex_nut",
+    "cross_screw",
+    "flat_washer",
+    "l_bracket",
+    "eccentric_wheel"
+  ],
+  "data_augmentation": {
+    "rotation_range": 30,
+    "brightness_range": [0.8, 1.2],
+    "zoom_range": [0.8, 1.2],
+    "horizontal_flip": true
+  },
+  "training_config": {
+    "epochs": 100,
+    "batch_size": 8,
+    "learning_rate": 0.001,
+    "optimizer": "AdamW",
+    "scheduler": "CosineAnnealingLR",
+    "device": "cuda",
+    "workers": 4,
+    "amp": true
+  }
+}
