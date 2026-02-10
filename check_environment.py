@@ -17,10 +17,10 @@ def check_python_version():
     print(f"当前Python版本: {version.major}.{version.minor}.{version.micro}")
     
     if version.major < 3 or (version.major == 3 and version.minor < 8):
-        print("❌ Python版本过低，需要Python 3.8或更高版本")
+        print("[X] Python版本过低，需要Python 3.8或更高版本")
         return False
     else:
-        print("✅ Python版本符合要求")
+        print("[OK] Python版本符合要求")
         return True
 
 
@@ -38,10 +38,10 @@ def check_package(package_name, import_name=None):
     try:
         module = importlib.import_module(import_name)
         version = getattr(module, '__version__', 'unknown')
-        print(f"✅ {package_name}: {version}")
+        print(f"[OK] {package_name}: {version}")
         return True
     except ImportError:
-        print(f"❌ {package_name}: 未安装")
+        print(f"[X] {package_name}: 未安装")
         return False
 
 
@@ -97,13 +97,13 @@ def check_tkinter():
         root = tk.Tk()
         root.withdraw()  # 隐藏窗口
         root.destroy()
-        print("✅ tkinter: 可用")
+        print("[OK] tkinter: 可用")
         return True
     except ImportError:
-        print("❌ tkinter: 不可用")
+        print("[X] tkinter: 不可用")
         return False
     except Exception as e:
-        print(f"⚠️ tkinter: 可能存在问题 - {e}")
+        print(f"[!] tkinter: 可能存在问题 - {e}")
         return False
 
 
@@ -115,14 +115,14 @@ def check_cuda():
         if torch.cuda.is_available():
             device_count = torch.cuda.device_count()
             device_name = torch.cuda.get_device_name(0) if device_count > 0 else "Unknown"
-            print(f"✅ CUDA: 可用 ({device_count} 个设备)")
+            print(f"[OK] CUDA: 可用 ({device_count} 个设备)")
             print(f"   主设备: {device_name}")
             return True
         else:
-            print("⚠️ CUDA: 不可用，将使用CPU模式")
+            print("[!] CUDA: 不可用，将使用CPU模式")
             return False
     except Exception as e:
-        print(f"❌ CUDA检查失败: {e}")
+        print(f"[X] CUDA检查失败: {e}")
         return False
 
 
@@ -151,9 +151,9 @@ def check_project_structure():
     for dir_path in required_dirs:
         full_path = project_root / dir_path
         if full_path.exists():
-            print(f"✅ {dir_path}/")
+            print(f"[OK] {dir_path}/")
         else:
-            print(f"❌ {dir_path}/ (缺失)")
+            print(f"[X] {dir_path}/ (缺失)")
             all_exist = False
     
     return all_exist
@@ -175,9 +175,9 @@ def check_config_files():
     for file_path in config_files:
         full_path = project_root / file_path
         if full_path.exists():
-            print(f"✅ {file_path}")
+            print(f"[OK] {file_path}")
         else:
-            print(f"❌ {file_path} (缺失)")
+            print(f"[X] {file_path} (缺失)")
             all_exist = False
     
     return all_exist
@@ -205,7 +205,7 @@ def main():
             result = check_func()
             results.append((name, result))
         except Exception as e:
-            print(f"❌ {name}检查失败: {e}")
+            print(f"[X] {name}检查失败: {e}")
             results.append((name, False))
     
     print("\n" + "=" * 50)
@@ -214,16 +214,16 @@ def main():
     
     all_passed = True
     for name, result in results:
-        status = "✅ 通过" if result else "❌ 失败"
+        status = "[OK] 通过" if result else "[X] 失败"
         print(f"{name}: {status}")
         if not result:
             all_passed = False
     
     print("\n" + "=" * 50)
     if all_passed:
-        print("🎉 所有检查都通过了！环境配置正确。")
+        print("所有检查都通过了！环境配置正确。")
     else:
-        print("⚠️ 部分检查失败，请根据上述信息修复问题。")
+        print("部分检查失败，请根据上述信息修复问题。")
         print("\n安装缺失包的命令:")
         print("pip install -r requirements.txt")
     print("=" * 50)
